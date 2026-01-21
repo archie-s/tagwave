@@ -1,0 +1,171 @@
+.nfc-reader-container {
+  margin-bottom: 2rem;
+}
+
+.nfc-reader {
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  padding: 2rem;
+  background: #f9f9f9;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nfc-reader.active {
+  border-color: #4caf50;
+  background: #f1f8f6;
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.2);
+}
+
+.nfc-reader.inactive {
+  border-color: #e0e0e0;
+  background: #fafafa;
+}
+
+.nfc-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.nfc-icon {
+  font-size: 3rem;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.nfc-icon.pulse {
+  animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.nfc-status {
+  flex: 1;
+}
+
+.nfc-status h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.status-message {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.status-message.success {
+  color: #4caf50;
+}
+
+.nfc-error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #d32f2f;
+  padding: 1rem;
+  background-color: #ffebee;
+  border-radius: 8px;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.error-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.nfc-reader-disabled {
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  padding: 2rem;
+  background: #f5f5f5;
+  text-align: center;
+  color: #666;
+}
+
+.nfc-reader-disabled .nfc-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.scanned-tags-list {
+  margin-top: 1.5rem;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 1.5rem;
+}
+
+.scanned-tags-list h4 {
+  margin: 0 0 1rem 0;
+  color: #333;
+  font-size: 1rem;
+}
+
+.tags-history {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.tag-history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+
+.tag-history-item:hover {
+  background: #f5f5f5;
+}
+
+.tag-id {
+  font-weight: 600;
+  color: #2196f3;
+}
+
+.tag-time {
+  color: #999;
+  font-size: 0.75rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .nfc-reader {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .nfc-icon {
+    font-size: 2.5rem;
+  }
+
+  .tags-history {
+    grid-template-columns: 1fr;
+  }
+}

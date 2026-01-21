@@ -1,0 +1,35 @@
+.scan-handler-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.scan-loading,
+.scan-error {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.scan-loading h2,
+.scan-error h2 {
+  margin-bottom: 1rem;
+  color: var(--gray-900);
+}
+
+.scan-loading p,
+.scan-error p {
+  color: var(--gray-600);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.scan-loading .spinner {
+  margin: 0 auto 2rem;
+}
+
+.scan-error h2 {
+  font-size: 2rem;
+}

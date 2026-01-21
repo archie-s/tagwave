@@ -1,0 +1,16 @@
+{
+  "name": "tagwave",
+  "version": "1.0.0",
+  "description": "NFC Tag Management and Analytics Platform",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "build": "npm run build --prefix frontend",
+    "install-all": "npm install && npm install --prefix frontend"
+  },
+  "keywords": ["nfc", "analytics", "mern"],
+  "author": "",
+  "license": "MIT"
+}
