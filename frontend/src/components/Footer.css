@@ -1,8 +1,20 @@
 .footer {
-  background-color: var(--gray-800);
+  background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);
   color: var(--gray-200);
   padding: 3rem 0 1rem;
   margin-top: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), var(--secondary-color), transparent);
 }
 
 .footer-content {
@@ -15,6 +27,19 @@
 .footer-section h3 {
   color: var(--white);
   margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.footer-section h3::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 2px;
 }
 
 .footer-section h4 {
@@ -38,11 +63,27 @@
 
 .footer-section ul li a {
   color: var(--gray-300);
-  transition: color 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+  position: relative;
+}
+
+.footer-section ul li a::before {
+  content: '→';
+  position: absolute;
+  left: -20px;
+  opacity: 0;
+  transition: all 0.3s ease;
 }
 
 .footer-section ul li a:hover {
   color: var(--white);
+  transform: translateX(20px);
+}
+
+.footer-section ul li a:hover::before {
+  opacity: 1;
+  left: -15px;
 }
 
 .footer-bottom {

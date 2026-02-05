@@ -1,26 +1,51 @@
 .tag-management-page {
   padding: 2rem 0;
   min-height: 100vh;
+  background: linear-gradient(135deg, #f9fafb 0%, #e0e7ff 100%);
+  animation: fadeIn 0.5s ease-out;
 }
 
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  animation: slideInLeft 0.6s ease-out;
 }
 
 .page-header h1 {
   color: var(--gray-900);
   margin-bottom: 0;
+  position: relative;
+  display: inline-block;
+}
+
+.page-header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 2px;
 }
 
 .filters-section {
-  background-color: var(--white);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   padding: 1.5rem;
-  border-radius: 0.5rem;
-  box-shadow: var(--shadow);
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   margin-bottom: 2rem;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+.filters-section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
 }
 
 .search-form {
@@ -43,27 +68,38 @@
   border: 2px solid var(--gray-300);
   background-color: var(--white);
   color: var(--gray-700);
-  border-radius: 0.375rem;
+  border-radius: 0.75rem;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filter-btn:hover {
   border-color: var(--primary-color);
   color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
 .filter-btn.active {
-  background-color: var(--primary-color);
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
   border-color: var(--primary-color);
   color: var(--white);
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
 }
 
 .tags-table-container {
-  background-color: var(--white);
-  border-radius: 0.5rem;
-  box-shadow: var(--shadow);
-  overflow-x: auto;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease-out 0.4s both;
+  transition: all 0.3s ease;
+}
+
+.tags-table-container:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
 .tags-table {
@@ -89,8 +125,14 @@
   color: var(--gray-700);
 }
 
+.tags-table tbody tr {
+  transition: all 0.3s ease;
+}
+
 .tags-table tbody tr:hover {
-  background-color: var(--gray-50);
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.05), rgba(16, 185, 129, 0.05));
+  transform: scale(1.01);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .tag-id {
@@ -121,19 +163,25 @@
 
 .status-badge {
   display: inline-block;
-  padding: 0.25rem 0.75rem;
+  padding: 0.375rem 0.875rem;
   border-radius: 1rem;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.status-badge:hover {
+  transform: scale(1.1);
 }
 
 .status-badge.active {
-  background-color: #d1fae5;
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
   color: #065f46;
 }
 
 .status-badge.inactive {
-  background-color: #fee2e2;
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
   color: #991b1b;
 }
 
@@ -146,13 +194,15 @@
   background: none;
   border: none;
   font-size: 1.25rem;
-  padding: 0.25rem;
+  padding: 0.5rem;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  border-radius: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-icon:hover {
-  transform: scale(1.2);
+  transform: scale(1.2) rotate(5deg);
+  background: rgba(37, 99, 235, 0.1);
 }
 
 .btn-icon.danger:hover {

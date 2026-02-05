@@ -1,10 +1,19 @@
 .navbar {
-  background-color: var(--white);
-  box-shadow: var(--shadow);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   position: sticky;
   top: 0;
   z-index: 1000;
   padding: 1rem 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar.scrolled {
+  padding: 0.75rem 0;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
 }
 
 .navbar-container {
@@ -16,10 +25,32 @@
 .navbar-brand {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--black);
+  color: var(--gray-900);
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.navbar-brand::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  transition: width 0.3s ease;
+}
+
+.navbar-brand:hover::after {
+  width: 100%;
+}
+
+.navbar-brand:hover {
+  transform: translateY(-2px);
+  color: var(--primary-color);
 }
 
 .brand-icon {
@@ -27,6 +58,12 @@
   height: 50px;
   width: auto;
   object-fit: contain;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.navbar-brand:hover .brand-icon {
+  transform: rotate(5deg) scale(1.05);
 }
 
 .navbar-menu {
@@ -38,11 +75,33 @@
 .navbar-link {
   color: var(--gray-700);
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
 }
 
 .navbar-link:hover {
-  color: var(--primary-color);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.navbar-link:hover::before {
+  opacity: 1;
 }
 
 .navbar-user {
@@ -51,11 +110,22 @@
   gap: 1rem;
   padding-left: 1rem;
   border-left: 1px solid var(--gray-200);
+  animation: slideInRight 0.5s ease-out;
 }
 
 .user-name {
   color: var(--gray-700);
   font-weight: 500;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, var(--gray-100), var(--gray-200));
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.user-name:hover {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  transform: scale(1.05);
 }
 
 .btn-sm {
