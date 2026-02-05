@@ -16,7 +16,7 @@
 .navbar-brand {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--primary-color);
+  color: var(--black);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -24,6 +24,9 @@
 
 .brand-icon {
   font-size: 1.75rem;
+  height: 50px;
+  width: auto;
+  object-fit: contain;
 }
 
 .navbar-menu {

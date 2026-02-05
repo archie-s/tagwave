@@ -16,7 +16,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="container navbar-container">
         <Link to="/" className="navbar-brand">
-          <span className="brand-icon">📡</span>
+          <img src="/tagwave_logo.jpeg" alt="TagWave Logo" className="brand-icon" />
           TagWave
         </Link>
 
