@@ -12,6 +12,7 @@ const authRoutes = require('./routes/auth');
 const tagRoutes = require('./routes/tags');
 const scanRoutes = require('./routes/scans');
 const userRoutes = require('./routes/users');
+const eventRoutes = require('./routes/events');
 
 // Connect to database
 connectDB();
@@ -52,6 +53,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/tags', tagRoutes);
 app.use('/api/scans', scanRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/events', eventRoutes);
 
 // Health check endpoint
 app.get('/health', (req, res) => {

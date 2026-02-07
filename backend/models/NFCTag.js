@@ -35,6 +35,11 @@ const nfcTagSchema = new mongoose.Schema(
       ref: 'User',
       required: true,
     },
+    event: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Event',
+      required: false,
+    },
     location: {
       type: String,
       trim: true,
