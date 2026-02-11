@@ -4,14 +4,6 @@ const bcrypt = require('bcryptjs');
 const User = require('./models/User');
 const readline = require('readline');
 
-/**
- * CREATE ADMIN ACCOUNT SCRIPT
- * 
- * This script creates a new admin user account.
- * 
- * Usage: node createAdmin.js
- */
-
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -43,7 +35,7 @@ const createAdmin = async () => {
 
     // Validate input
     if (!name || !email || !password) {
-      console.log('\n❌ All fields are required!');
+      console.log('\n All fields are required!');
       rl.close();
       process.exit(1);
     }
@@ -51,7 +43,7 @@ const createAdmin = async () => {
     // Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      console.log(`\n❌ User with email ${email} already exists!`);
+      console.log(`\n User with email ${email} already exists!`);
       console.log(`Current role: ${existingUser.role}`);
       
       if (existingUser.role !== 'admin') {
@@ -59,7 +51,7 @@ const createAdmin = async () => {
         if (upgrade.toLowerCase() === 'yes' || upgrade.toLowerCase() === 'y') {
           existingUser.role = 'admin';
           await existingUser.save();
-          console.log(`\n✅ User ${email} has been upgraded to admin!`);
+          console.log(`\n User ${email} has been upgraded to admin!`);
         }
       }
       rl.close();
@@ -74,21 +66,20 @@ const createAdmin = async () => {
       role: 'admin',
     });
 
-    console.log('\n✅ Admin account created successfully!\n');
+    console.log('\n Admin account created successfully!\n');
     console.log('Account Details:');
-    console.log(`📧 Email: ${adminUser.email}`);
-    console.log(`👤 Name: ${adminUser.name}`);
-    console.log(`🔑 Role: ${adminUser.role}`);
+    console.log(` Email: ${adminUser.email}`);
+    console.log(` Name: ${adminUser.name}`);
+    console.log(` Role: ${adminUser.role}`);
     console.log('\nYou can now log in with these credentials.\n');
 
     rl.close();
     process.exit(0);
   } catch (error) {
-    console.error('\n❌ Error creating admin account:', error.message);
+    console.error('\n Error creating admin account:', error.message);
     rl.close();
     process.exit(1);
   }
 };
 
-// Run the script
 connectDB().then(() => createAdmin());
