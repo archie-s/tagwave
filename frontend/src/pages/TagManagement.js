@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import eventService from '../services/eventService';
 import tagService from '../services/tagService';
 import NFCReader from '../components/NFCReader';
+import ACR122UProgrammer from '../components/ACR122UProgrammer';
 import { parseBulkTagFile, validateTagData, generateTagCSVTemplate, parseExcelFile, validateAttendeeData, generateCSVTemplate } from '../utils/excelParser';
 import './TagManagement.css';
 
@@ -616,6 +617,18 @@ const TagManagement = () => {
                 </div>
               </div>
             </div>
+
+            {/* ACR122U Tag Programmer Section */}
+            <ACR122UProgrammer
+              eventId={selectedEvent._id}
+              eventName={selectedEvent.name}
+              onTagProgrammed={(tag) => {
+                // Refresh event tags and stats after programming
+                fetchEventTags();
+                fetchEventStats();
+                setSuccess(`Tag ${tag.tagId} programmed successfully!`);
+              }}
+            />
 
             {/* NFC Reader Section */}
             <div className="nfc-reader-section">
